@@ -1,5 +1,3 @@
-
-
 from pydantic import BaseModel
 
 
@@ -21,4 +19,9 @@ class TextAnalysis(BaseModel):
     count_verb: int
     count_adj: int
     count_adv: int
-    most_frequent_words: list[dict[str, int]]
+    most_frequent_words: list[dict]
+
+
+class TextValidation(BaseModel):
+    check: str
+    reason: str

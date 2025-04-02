@@ -4,7 +4,6 @@ import re
 from dotenv import load_dotenv
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
-from sklearn.neighbors import KNeighborsClassifier
 from transformers import BertForSequenceClassification, AutoTokenizer
 import torch
 import torch.nn.functional as F
@@ -41,7 +40,7 @@ def analyse_text(text: str) -> TextAnalysis:
     count_per, count_loc, count_org = get_entities_features(text)
     count_noun, count_verb, count_adj, count_adv = get_stylistic_features(text)
     predicted_class = "Credible" if prediction == 0 else "Non-Credible"
-    if confidence < 0.55:
+    if confidence < 0.55 and confidence > 0.45:
         predicted_class = "Doubtful"
     return TextAnalysis(
         prediction=predicted_class,

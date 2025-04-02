@@ -16,5 +16,4 @@ async def verify(text: TextSchema):
 @app.post(path=f"{BASE_URL}/cross-validate", response_model=TextValidation)
 async def cross_validate(text: TextSchema):
     result = services.cross_validate_news(text.text)
-    print(type(result))
     return result

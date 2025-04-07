@@ -19,6 +19,7 @@ class TextAnalysis(BaseModel):
     count_verb: int
     count_adj: int
     count_adv: int
+    unique_words_ratio: float
     most_frequent_words: list[dict]
 
 
